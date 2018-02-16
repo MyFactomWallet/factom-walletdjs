@@ -1,0 +1,126 @@
+{
+  "_from": "factomdjs@^0.2.4",
+  "_id": "factomdjs@0.2.5",
+  "_inBundle": false,
+  "_integrity": "sha512-RSE776a4oE5Q4xRtLeeOzeRJeaWUl/54/9PhkewiiZSF/EN6utaIXokrvTISmLdNhUogmCAZiaSRGWKHCFjtMA==",
+  "_location": "/factomdjs",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "factomdjs@^0.2.5",
+    "name": "factom-walletdjs",
+    "escapedName": "factom-walletdjs",
+    "rawSpec": "^0.2.5",
+    "saveSpec": null,
+    "fetchSpec": "^0.2.5"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/factomdjs/-/factom-walletdjs-0.2.5.tgz",
+  "_shasum": "13c77efd312a036951a53b388f763324fc648a95",
+  "_spec": "factom-walletdjs@^0.2.5",
+  "_where": "/proj/MFW/factomd",
+  "author": {
+    "name": "bunfield",
+    "email": "dbunfield@cybitron.com"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/MyFactomWallet/factom-walletdjs/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": null,
+      "email": null,
+      "url": "https://github.com/bunfield",
+      "contributions": 1,
+      "additions": 2,
+      "deletions": 0,
+      "hireable": null
+    }
+  ],
+  "dependencies": {
+    "babel-preset-es2015-node5": "^1.1.0",
+  },
+  "deprecated": false,
+  "description": "JavaScript implementation of the factom-walletd API v2.0",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "babelify": "^7.3.0",
+    "watchify": "^3.9.0",
+    "browserify": "^14.4.0",
+    "contributor": "^0.1.25",
+    "coveralls": "^2.11.4",
+    "documentation": "^5.3.1",
+    "node-uuid": "^1.4.8",
+    "istanbul": "^0.4.5",
+    "karma": "^1.3.0",
+    "karma-browserify": "^5.0.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-detect-browsers": "2.2.5",
+    "karma-env-preprocessor": "^0.1.1",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-mocha": "^1.3.0",
+    "mocha": "^3.5.0",
+    "standard": "^10.0.3",
+    "uglifyify": "^4.0.3"
+  },
+  "homepage": "https://github.com/MyFactomWallet/factom-walletdjs",
+  "keywords": [
+    "factom",
+    "wallet",
+    "utilties"
+  ],
+  "license": "MPL-2.0",
+  "main": "src/factom-walletd.js",
+  "name": "factom-walletdjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MyFactomWallet/factom-walletdjs.git"
+  },
+  "babel": {
+    "presets": [
+      "es2015-node"
+    ]
+  },
+  "scripts": {
+    "build:dist": "browserify -r ./src/factom-walletd.js:factom-walletdjs -s Util -t [ babelify --presets [ es2015 react ] ] > dist/factom-walletd.js",
+    "build:docs": "documentation build --github  -f md ./src/factom-walletd.js > ./docs/factom-walletd.md && contributor",
+    "build:no-dist": "browserify src/factom-walletd.js -o dist/factom-walletdjs.js --debug -t [ babelify --presets [ es2015 react ] ]",
+    "b": "babel-node",
+    "clean": "rm dist/factomd.js",
+    "coverage": "istanbul cover _mocha",
+    "coveralls": "npm run coverage && coveralls <coverage/lcov.info",
+    "lint": "standard src/factomd.js",
+    "prepublish": "npm run lint && npm run test && npm run build:docs && npm run build:dist",
+    "test": "npm run test:node",
+    "test:browser": "karma start karma.conf.js",
+    "test:node": "istanbul test mocha -- --reporter spec --compilers js:babel-core/register"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "it"
+    ]
+  },
+  "version": "0.2.5"
+}
