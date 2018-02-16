@@ -1,12 +1,12 @@
 'use-strict'
 
-var URL = 'http://127.0.0.1:8089/v2'
-var lib = URL.startsWith('https') ? require('https') : require('http')
-var options = optinit()
-var timeout = 2000
+let URL = 'http://127.0.0.1:8089/v2'
+let lib = URL.startsWith('https') ? require('https') : require('http')
+let options = optinit()
+let timeout = 2000
 
 function optinit () {
-  var opt = require('url').parse(URL)
+  const opt = require('url').parse(URL)
   opt.headers = { 'content-type': 'text/plain', 'content-length': 0 }
   opt.method = 'POST'
   return opt
@@ -41,7 +41,7 @@ function setTimeout (to) {
  */
 function dispatch (jdata) {
   return new Promise((resolve, reject) => {
-    var body = JSON.stringify(jdata)
+    const body = JSON.stringify(jdata)
     options.headers['content-length'] = Buffer.byteLength(body)
     const request = new lib.ClientRequest(options)
     request.on('socket', socket => {
@@ -101,7 +101,7 @@ const ApiCounter = newCounter()
  *
  */
 function addEcOutput (txname, ecaddress, amount) {
-  var jdata = { 'jsonrpc': '2.0',
+  const jdata = { 'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'add-ec-output',
     'params': {
@@ -127,7 +127,7 @@ function addEcOutput (txname, ecaddress, amount) {
  *
  */
 function addFee (txname, fctaddress) {
-  var jdata = { 'jsonrpc': '2.0',
+  const jdata = { 'jsonrpc': '2.0',
       'id': ApiCounter(),
       'method': 'add-ec-output',
       'params': {
@@ -154,7 +154,7 @@ function addFee (txname, fctaddress) {
  *
  */
 function addInput  (txname, fctaddress) {
-  var jdata = {'jsonrpc': '2.0', 
+  const jdata = {'jsonrpc': '2.0', 
       'id': ApiCounter(), 
       'method': 'add-input',
       'params': {
@@ -177,7 +177,7 @@ function addInput  (txname, fctaddress) {
  *
  */
 function addOutput  (fctaddress, amount) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'add-output',
     'params': {
@@ -199,7 +199,7 @@ function addOutput  (fctaddress, amount) {
  *
  */
 function address  (address) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'address',
     'params': {
@@ -218,7 +218,7 @@ function address  (address) {
  *
  */
 function allAddresses  (height) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'all-addresses'
     }
@@ -247,7 +247,7 @@ function allAddresses  (height) {
  *
  */
 function composeChain  (extids, content, ecaddress) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'compose-chain',
     'params': {
@@ -276,7 +276,7 @@ function composeChain  (extids, content, ecaddress) {
  *
  */
 function composeEntry  (chainid, extids, content, ecaddress) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'compose-entry',
     'params': {
@@ -299,7 +299,7 @@ function composeEntry  (chainid, extids, content, ecaddress) {
  *
  */
 function composeTransaction  (txname) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'compose-transaction',
     'params': {
@@ -320,7 +320,7 @@ function composeTransaction  (txname) {
  *
  */
 function deleteTransaction  (txname) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'delete-transaction',
     'params': {
@@ -339,7 +339,7 @@ function deleteTransaction  (txname) {
  *
  */
 function generateEcAddress (id) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'generate-ec-address'
     }
@@ -356,7 +356,7 @@ function generateEcAddress (id) {
  *
  */
 function generateFactoidAddress (id) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'generate-factoid-address'
     }
@@ -374,7 +374,7 @@ function generateFactoidAddress (id) {
  *
  */
 function getHeight (id) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'get-height'
     }
@@ -392,7 +392,7 @@ function getHeight (id) {
  *
  */
 function importAddresses  (privaddresses) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'import-addresses',
     'params': {
@@ -414,7 +414,7 @@ function importAddresses  (privaddresses) {
  *
  */
 function importKoinify  (koinify) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'import-koinify',
     'params': {
@@ -439,7 +439,7 @@ function importKoinify  (koinify) {
  *
  */
 function newTransaction  (txname) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'new-transaction',
     'params': {
@@ -459,7 +459,7 @@ function newTransaction  (txname) {
  *
  */
 function properties (id) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'properties'
     }
@@ -477,7 +477,7 @@ function properties (id) {
  *
  */
 function signTransaction  (txname) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'sign-transaction',
     'params': {
@@ -503,7 +503,7 @@ function signTransaction  (txname) {
  *
  */
 function subFee  (txname, fctaddress) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'sub-fee',
     'params': {
@@ -525,7 +525,7 @@ function subFee  (txname, fctaddress) {
  *
  */
 function tmpTransactions  (address) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'tmp-transactions'
     }
@@ -544,7 +544,7 @@ function tmpTransactions  (address) {
  *
  */
 function transactionsByRange  (start, end) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'transactions',
     'params': {
@@ -571,7 +571,7 @@ function transactionsByRange  (start, end) {
  *
  */
 function transactionsByTxID  (txid) {
-  var jdata = {'jsonrpc': '2.0', 'id': ApiCounter(), 'method': 'transactions',
+  const jdata = {'jsonrpc': '2.0', 'id': ApiCounter(), 'method': 'transactions',
     'params':{
       'txid':txid
   }}
@@ -589,7 +589,7 @@ function transactionsByTxID  (txid) {
  *
  */
 function transactionsByAddress  (address) {
-  var jdata = {'jsonrpc': '2.0', 
+  const jdata = {'jsonrpc': '2.0', 
     'id': ApiCounter(), 
     'method': 'transactions',
     'params': {
@@ -619,7 +619,7 @@ function transactionsByAddress  (address) {
  *
  */
 function transactionsAll (id) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'transactions'
     }
@@ -637,7 +637,7 @@ function transactionsAll (id) {
  *
  */
 function walletBackup  (message) {
-  var jdata = {'jsonrpc': '2.0',
+  const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'wallet-backup'
     }
