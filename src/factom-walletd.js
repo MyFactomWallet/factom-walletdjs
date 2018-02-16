@@ -77,7 +77,7 @@ function newCounter () {
   }
 }
 
-const APICounter = newCounter()
+const ApiCounter = newCounter()
 
 
 /**
