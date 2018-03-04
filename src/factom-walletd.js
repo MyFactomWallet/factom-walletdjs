@@ -152,15 +152,17 @@ function addFee (txname, fctaddress) {
  *
  * @param {String} txname  transaction name
  * @param {String} fctaddress  factoid address
+ * @param {Number} amount amount to send in factoshis
  *
  */
-function addInput  (txname, fctaddress) {
+function addInput  (txname, fctaddress, amount) {
   const jdata = {'jsonrpc': '2.0', 
       'id': ApiCounter(), 
       'method': 'add-input',
       'params': {
            'tx-name': txname,
-           'address': fctaddress
+           'address': fctaddress,
+           'amount' : amount
        }}
   return dispatch(jdata)
 }
@@ -177,7 +179,7 @@ function addInput  (txname, fctaddress) {
  * @param {Number} amount amount to send in factoshis
  *
  */
-function addOutput  (fctaddress, amount) {
+function addOutput  (txname, fctaddress, amount) {
   const jdata = {'jsonrpc': '2.0',
     'id': ApiCounter(),
     'method': 'add-output',
